@@ -66,7 +66,7 @@
                     }
                 case 2:
                     {
-
+                        Console.WriteLine();
                         break;
                     }
                 default:

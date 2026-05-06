@@ -107,7 +107,7 @@ namespace GreedyAlgorithms
                         {
                             minTotalCost = currentCost;
                         }
-                        Console.WriteLine(minTotalCost);
+                        SpecialMethods.ColorPrint(minTotalCost.ToString(), ConsoleColor.Green);
                         break;
                     }
                 default:

@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 namespace GreedyAlgorithms
 {
@@ -51,6 +52,7 @@ namespace GreedyAlgorithms
                                     last = gasStations[i];
                                     i++;
                                 }
+                                Console.WriteLine(last);
                                 if (last == current)
                                 {
                                     count = -1;
@@ -71,12 +73,12 @@ namespace GreedyAlgorithms
                         long m = Convert.ToInt32(Console.ReadLine());
                         SpecialMethods.ColorPrint("| | | | | | | | | | |", ConsoleColor.Green);
                         int[] seconds = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-                        Console.WriteLine(string.Join("\t", seconds));
                         for (int i = 0; i < 11; i++)
                         {
-                            Console.Write(Math.Pow(2, i) + "\t");
+                            Console.Write(i + "\t");
                         }
                         Console.WriteLine();
+                        Console.WriteLine(string.Join("\t", seconds));
                         for (int i = 1; i < seconds.Length; i++)
                         {
                             if (seconds[i] < 2 * seconds[i - 1])
@@ -84,6 +86,12 @@ namespace GreedyAlgorithms
                                 seconds[i] = 2 * seconds[i - 1];
                             }
                         }
+                        Console.WriteLine(string.Join("\t", seconds));
+                        for (int i = 0; i < 11; i++)
+                        {
+                            Console.Write(Math.Pow(2, i) + "\t");
+                        }
+                        Console.WriteLine();
                         long minTotalCost = long.MaxValue;
                         long currentCost = 0;
                         for (int i = 10; i >= 0; i--)
@@ -102,6 +110,7 @@ namespace GreedyAlgorithms
                             long fullCards = m / seconds[i];
                             currentCost += fullCards * cardPrice;
                             m -= fullCards * seconds[i];
+                            Console.WriteLine($"{i} >> temp = {seconds[i]} | price = {currentCost}");
                         }
                         if (m <= 0 && currentCost < minTotalCost)
                         {
